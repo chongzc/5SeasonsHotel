@@ -24,3 +24,7 @@ signIn.addEventListener('click', ()=>{
     loginIn.classList.toggle('block')
     loginUp.classList.toggle('none')
 })
+
+function setLoginStatus() {
+    localStorage.setItem('loggedIn', true);
+}

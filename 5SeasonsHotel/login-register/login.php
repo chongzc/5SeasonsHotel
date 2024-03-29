@@ -74,6 +74,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Close connection
     mysqli_close($conn);
+
+    if ($password == $hashed_password) {
+    // Password is correct, so start a new session
+    session_start();
+    
+    // Store data in session variables
+    $_SESSION["loggedin"] = true;
+    $_SESSION["id"] = $id;
+    $_SESSION["username"] = $username;
+    $_SESSION["email"] = $email;
+
+    // Call JavaScript function to set login status
+    echo '<script>setLoginStatus();</script>';
+
+    // Redirect user to booking page
+    header("location: /5SeasonsHotel/bookNow/index.php");
+    exit();
+} else {
+    // Password is not valid, display a generic error message
+    $password_err = "Invalid password.";
+}
+}
+
+if ($password == $hashed_password) {
+    // Password is correct, so start a new session
+    session_start();
+    
+    // Store data in session variables
+    $_SESSION["loggedin"] = true;
+    $_SESSION["id"] = $id;
+    $_SESSION["username"] = $username;
+    $_SESSION["email"] = $email;
+
+    // Call JavaScript function to set login status
+    echo '<script>setLoginStatus();</script>';
+
+    // Redirect user to booking page
+    header("location: /5SeasonsHotel/bookNow/index.php");
+    exit();
+} else {
+    // Password is not valid, display a generic error message
+    $password_err = "Invalid password.";
 }
 ?>
 
@@ -86,40 +128,89 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="style.css">
     <!-- ===== Font Awesome Icons ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <title>Book Store Login Form</title>
+    <title>5 Seasons Hotel | Login Form</title>
 </head>
 <body>
-<div class="login">
-    <div class="login__content">
-        <div class="login__img">
-            <img src="img-login.svg" alt="">
-        </div>
-        <div class="login__forms">
-            <!-- Login Form -->
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login__registre" id="login-in">
-                <h1 class="login__title">Sign In</h1>
-                <div class="login__box <?php echo (!empty($usernameOrEmail_err)) ? 'has-error' : ''; ?>">
-                    <i class="fa-regular fa-user login__icon"></i>
-                    <input type="text" name="usernameOrEmail" placeholder="Username Or Email" class="login__input" value="<?php echo $usernameOrEmail; ?>">
-                    <label for="usernameOrEmail"></label>
-                    <span class="help-block"><?php echo $usernameOrEmail_err; ?></span>
-                </div>
-                <div class="login__box <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <i class="fa-solid fa-lock login__icon"></i>
-                    <input type="password" name="password" placeholder="Password" class="login__input">
-                    <label for="password"></label>
-                    <span class="help-block"><?php echo $password_err; ?></span>
-                </div>
-                <button type="submit" class="login__button">Sign In</button>
-                <div>
-                    <span class="login__account">Don't have an Account ?</span>
-                    <a href="register.php" class="login__signup" id="sign-up">Sign Up</a>
-                </div>
-            </form>
-        </div>
+<div class="navigationMenu">
+    <div>
+        <img class="logo" src="\5SeasonsHotel\includes\includesImages\navigationMenuImages\logo.png" alt="logo">
     </div>
+    <div class="menuItems">
+        <nav>
+            <ul>
+                <li><a href="/5SeasonsHotel/">Home</a></li>
+                <li><a href="/5SeasonsHotel/Gallery/index.php">Gallery</a></li>
+                <li><a href="/5SeasonsHotel/contactUs/index.php">Contact Us</a></li>
+                <li><a href="#" onclick="checkLoginStatus('/5SeasonsHotel/bookNow/index.php')">Book Now</a></li>
+                <li class="profileLink">
+                    <?php 
+                        session_start();
+                        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                            echo '<a href="#" onclick="confirmLogout()">';
+                        } else {
+                            echo '<a href="/5SeasonsHotel/login-register/login.php">';
+                        }
+                    ?>
+                    <img src="\5SeasonsHotel\includes\includesImages\navigationMenuImages\profile-user.png" alt="Profile" width="40" style="height: 40px">
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+        </svg>
+    </button>
 </div>
-<!--===== MAIN JS =====-->
-<script src="main.js"></script>
+
+<div class="sidebar" onclick="toggleMenu()">
+    <nav>
+        <ul>
+            <li><a href="/5SeasonsHotel/">HOME</a></li>
+            <li><a href="/5SeasonsHotel/Gallery/index.php">GALLERY</a></li>
+            <li><a href="/5SeasonsHotel/contactUs/index.php">CONTACT USs</a></li>
+            <li><a href="#" onclick="checkLoginStatus('/5SeasonsHotel/bookNow/index.php')">BOOK NOW</a></li>
+            <li>
+                <?php 
+                    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        echo '<a href="#" onclick="confirmLogout()">';
+                    } else {
+                        echo '<a href="/5SeasonsHotel/login-register/login.php">';
+                    }
+                ?>
+                Login
+            </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    // Reset login status to false on page load
+    localStorage.setItem('loggedIn', 'false');
+
+    function toggleMenu() {
+        var sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('show');
+    }
+
+    function checkLoginStatus(destination) {
+        var loggedIn = localStorage.getItem('loggedIn');
+        if (loggedIn === 'true') {
+            window.location.href = destination;
+        } else {
+            window.location.href = '/5SeasonsHotel/login-register/login.php';
+        }
+    }
+
+    function confirmLogout() {
+        var logout = confirm('Do you want to log out?');
+        if (logout) {
+            localStorage.setItem('loggedIn', 'false'); // Set login status to false
+            window.location.href = '/5SeasonsHotel/logout.php'; // Redirect to logout page
+        }
+    }
+</script>
 </body>
 </html>

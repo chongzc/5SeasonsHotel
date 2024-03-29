@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="style.css">
     <!-- ===== Font Awesome Icons ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <title>Book Store Registration Form</title>
+    <title>5 Seasons Hotel | Registration</title>
 </head>
 <body>
 <div class="login">
