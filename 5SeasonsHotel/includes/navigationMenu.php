@@ -10,7 +10,7 @@
                     <li><a href="/5SeasonsHotel/contactUs/index.php">Contact Us</a></li>
                     <li><a href="/5SeasonsHotel/bookNow">Book Now</a></li>
                     <li class="profileLink">
-                        <a href="/5SeasonsHotel/profile">
+                        <a href="/5SeasonsHotel/cart">
                             <img src="\5SeasonsHotel\includes\includesImages\navigationMenuImages\profile-user.png" alt="Profile" width="40" style="height: 40px">
                         </a>
                     </li>
