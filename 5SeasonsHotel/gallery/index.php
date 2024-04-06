@@ -40,8 +40,12 @@
         </div>
 
         <div class="items">
-          <div class="img">
-            <img src="galleryImages/twin_double.png">
+        <div class="img" onclick="openPopup(this)">
+            <img src="galleryImages/twin_double.png" alt="Twin Double Room">
+            <div class="popup">
+              <img src="galleryImages/twin_double.png" alt="Twin Double Room">
+              <span class="close-btn" onclick="closePopup(this)">&times;</span>
+            </div>
           </div>
           <div class="details">
               <p>Room: Twin Double Room(2x King bed)</p>
@@ -51,8 +55,12 @@
         </div>
 
         <div class="items">
-          <div class="img">
-            <img src="galleryImages/deluxe.png">
+          <div class="img" onclick="openPopup(this)">
+            <img src="galleryImages/deluxe.png" alt="Deluxe Room">
+            <div class="popup">
+              <img src="galleryImages/deluxe.png" alt="Deluxe Room">
+              <span class="close-btn" onclick="closePopup(this)">&times;</span>
+            </div>
           </div>
           <div class="details">
               <p>Room: Deluxe Room(1x King bed)</p>
@@ -62,8 +70,12 @@
         </div>
 
         <div class="items">
-          <div class="img">
-            <img src="galleryImages/connecting.png">
+        <div class="img" onclick="openPopup(this)">
+            <img src="galleryImages/connecting.png" alt="Connecting Room">
+            <div class="popup">
+              <img src="galleryImages/connecting.png" alt="Connecting Room">
+              <span class="close-btn" onclick="closePopup(this)">&times;</span>
+            </div>
           </div>
           <div class="details">
               <p>Room: Connecting Room(1x King bed, 2x Single bed)</p>
