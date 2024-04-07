@@ -41,14 +41,14 @@
 
         <div class="items">
         <div class="img" onclick="openPopup(this)">
-            <img src="galleryImages/twin_double.png" alt="Twin Double Room">
+            <img src="galleryImages/twin.png" alt="Twin Room">
             <div class="popup">
-              <img src="galleryImages/twin_double.png" alt="Twin Double Room">
+              <img src="galleryImages/twin.png" alt="Twin Room">
               <span class="close-btn" onclick="closePopup(this)">&times;</span>
             </div>
           </div>
           <div class="details">
-              <p>Room: Twin Double Room(2x King bed)</p>
+              <p>Room: Twin Room(2x King bed)</p>
               <p>Price: RM 259</p>
               <p>Availability: 4 ppl</p>
           </div>
