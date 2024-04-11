@@ -10,12 +10,8 @@
     <br>
       <div class="container">
         <div class="items">
-          <div class="img" onclick="openPopup(this)">
+          <div class="img">
             <img src="galleryImages/single.png" alt="Single Room">
-            <div class="popup">
-              <img src="galleryImages/single.png" alt="Single Room">
-              <span class="close-btn" onclick="closePopup(this)">&times;</span>
-            </div>
           </div>
           <div class="details">
               <p>Room: Single Room(2x Single bed)</p>
@@ -25,12 +21,8 @@
         </div>
 
         <div class="items">
-          <div class="img" onclick="openPopup(this)">
+          <div class="img">
             <img src="galleryImages/double.png" alt="Double Room">
-            <div class="popup">
-              <img src="galleryImages/double.png" alt="Double Room">
-              <span class="close-btn" onclick="closePopup(this)">&times;</span>
-            </div>
           </div>
           <div class="details">
               <p>Room: Double Room(1x King bed)</p>
@@ -40,12 +32,8 @@
         </div>
 
         <div class="items">
-        <div class="img" onclick="openPopup(this)">
+        <div class="img">
             <img src="galleryImages/twin.png" alt="Twin Room">
-            <div class="popup">
-              <img src="galleryImages/twin.png" alt="Twin Room">
-              <span class="close-btn" onclick="closePopup(this)">&times;</span>
-            </div>
           </div>
           <div class="details">
               <p>Room: Twin Room(2x King bed)</p>
@@ -55,12 +43,8 @@
         </div>
 
         <div class="items">
-          <div class="img" onclick="openPopup(this)">
+          <div class="img">
             <img src="galleryImages/deluxe.png" alt="Deluxe Room">
-            <div class="popup">
-              <img src="galleryImages/deluxe.png" alt="Deluxe Room">
-              <span class="close-btn" onclick="closePopup(this)">&times;</span>
-            </div>
           </div>
           <div class="details">
               <p>Room: Deluxe Room(1x King bed)</p>
@@ -70,12 +54,8 @@
         </div>
 
         <div class="items">
-        <div class="img" onclick="openPopup(this)">
+        <div class="img">
             <img src="galleryImages/connecting.png" alt="Connecting Room">
-            <div class="popup">
-              <img src="galleryImages/connecting.png" alt="Connecting Room">
-              <span class="close-btn" onclick="closePopup(this)">&times;</span>
-            </div>
           </div>
           <div class="details">
               <p>Room: Connecting Room(1x King bed, 2x Single bed)</p>
@@ -86,18 +66,5 @@
       </div>
 
     <?php include('../includes/footer.php'); ?>
-
-    <script>
-    function openPopup(element) {
-      var popup = element.querySelector('.popup');
-      popup.style.display = 'block';
-    }
-
-    function closePopup(element) {
-      var popup = element.parentElement;
-      popup.style.display = 'none';
-      event.stopPropagation();
-    }
-    </script>
   </body>
 </html>
